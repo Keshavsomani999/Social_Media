@@ -1,0 +1,18 @@
+.links{
+    height:0;
+    overflow: hidden;
+}
+.drop{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    animation-duration: 3s;
+    transition-delay: 2s;
+}
+.dropdown{
+    position: relative;
+    transition-delay: 1s;
+
+}
+
+.dropdown:hover .drop{display: block;}

@@ -1,0 +1,97 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+      <title>Profile - {{user_profile.user.username}}</title>
+{% endblock %}
+{% block body %}
+<body class="bg-gradient-to-b from-gray-300 bg-no-repeat">
+    
+    
+
+<div class="">
+    <img src="{{user_profile.background.url}}" class="rounded-b-xl h-96 w-screen" alt="">
+</div> 
+
+
+
+<div class="lg:mx-32 sm:mx-5 mb-10 grid grid-cols-3 ">
+    <div class="col-span-2 flex">
+      <figure>
+    <img src="{{user_profile.profileimg.url}}" class="relative border-4 border-solid rounded-lg h-40 w-40 -mt-10 border-gray-300">
+    <figcaption class="mt-2 px-1 py-2 bg-black absolute text-white text-center rounded-md">{{user_profile.bio}}</figcaption>
+  </figure>
+    <div class="mt-2 ml-4">
+        <h1 class="font-bold text-size text-lg">{{user_profile.user.username}}</h1>
+        
+        {% if user_post_length == 0 %}
+        <h1 class="text-blue-300 mt-1 text-lg">No post</h1>
+        {% elif user_post_length == 1 %}
+        <h1 class="text-blue-300 mt-1 text-lg"><b>{{user_post_length}}</b>  Post</h1>
+
+        {% else %}
+        <h1 class="text-blue-300 mt-1 text-lg"><b>{{user_post_length}}</b>  Posts</h1>
+
+        {% endif %}
+
+        {% if user_followers == 0 or user_followers == 1 %}
+        <h1 class="text-blue-300  text-lg"><b>{{user_followers}}</b>  Follower</h1>
+        {% else %}
+        <h1 class="text-blue-300  text-lg"><b>{{user_followers}}</b>  Followers</h1>
+        {% endif %}
+
+
+
+        <h1 class="text-blue-300  text-lg"><b>{{user_following}}</b>  Following</h1>
+    </div>
+    </div>
+    <!-- <div class="flex-1 float-right">
+      <h1 class="font-bold text-lg">11 Posts</h1>
+      <h1 class="font-bold text-lg">3.7 k Followers</h1>
+      <h1 class="font-bold text-lg">3k Following</h1>
+    </div> -->
+
+ 
+    <div class="mt-24" >
+      <form action="/follow" method="POST">{% csrf_token %}
+        <input type="hidden" value="{{user.username}}" name="follower">
+        <input type="hidden" value="{{user_object.username}}" name="user">
+
+    
+      {% if user_object.username == user.username %}
+
+      
+        <button class="bg-blue-400 py-1 px-3 rounded-lg ml-32"><a href="/settings" class="text-decoration-none">Account Settings</a></button>
+      <!-- <span class="bg-blue-400 py-1 px-3 rounded-lg ml-32">Account Settings</span> -->
+      
+      {% else %}
+      <a href="/setting" class="text-decoration-none"><button class="bg-gray-300 hover:text-black hover:bg-gray-400 rounded-md text-center h-10 py-2 px-3 ml-32 flex w-28">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-2 mt-1 bi bi-person-plus-fill" viewBox="0 0 16 16">
+        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+      </svg>
+      <span>{{button_text}}</span>
+    </button></a>
+      {% endif %}
+
+    
+  </form>
+
+</div>
+</div>
+
+<hr class="mx-52">
+
+<h1 class="text-center mt-3" style="font-size: 50px;"><b>Posts</b></h1>
+
+<div class="bg-gray-200 grid grid-cols-4 gap-4 mt-4 mx-auto px-4 py-3 mb-20">
+  {% for post in user_posts %}
+  <div class="border-2 border-blue-300 border-solid shadow-2xl hover:grayscale transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 shadow-cyan-600">
+    <a href="{{ post.image.url }}"><img src="{{ post.image.url }}" alt=""></a>
+  </div>
+  
+ {% endfor %}
+</div>
+
+</body>
+{% endblock %}
+</html>

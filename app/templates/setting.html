@@ -1,0 +1,52 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block body %}
+<body class="bg-center"  style="background-image: url('{% static 'i3.jpg' %}');background-size: cover; background-attachment: fixed;">
+
+
+   
+
+<h1 class="text-white font-serif text-2xl my-3 text-center">Account Setting for<b> {{user.username}}</b></h1>
+<div class="bg-gradient-to-r from-indigo-200 via-pink-200 to-white mt-10 mx-auto py-5 w-fit h-fit rounded-xl">
+    <form action="" method="POST" class="pt-2" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group -mt-8">
+            
+        <img src="{{user_profile.profileimg.url}}" class="mx-auto rounded-full h-40 w-40 border-2 border-solid border-blue-200" alt="">
+        <!-- <button class="ml-96 -mt-8 px-1 bg-white absolute z-50 rounded-full border-4 border-blue-500 border-solid" onclick="document.getElementById('img').click()"><i class="fa-solid fa-upload"></i></button> -->
+        
+        <input required type="file" value="" id="img" name="image" class="mx-auto mt-2 form-control w-1/2 rounded-lg  bg-gray-500">   
+        <div class="form-group mx-5 px-5">
+            <label for="username">
+                <b>Background Image :</b>
+             </label>
+        <input required type="file" value="" id="img" name="bg" class="mx-auto mt-2 form-control w-1/2 rounded-lg  bg-gray-500">            
+
+        </div>
+        
+
+        </div>
+    <div class="mb-5">
+        <div class="form-group mx-5 px-5">
+            <label for="username">
+               <b>Bio :</b>
+            </label>
+            <textarea required name="bio" id="" class="form-control bg-gray-200" cols="60" rows="5">{{user_profile.bio}}</textarea>
+            
+        </div>
+        <div class="form-group mx-5 px-5">
+            <label for="Location">
+              <b>Location :</b>
+            </label>
+            <input required type="text" value="{{user_profile.location}}" name="location" class="form-control bg-gray-200">
+            
+        </div>
+        
+        <button class="bg-gray-300 py-1 px-3 rounded-lg float-right mr-24"><a href="/" class="text-decoration-none hover:text-black">Cancel</a></button>
+        <button type="submit" class="bg-green-400 py-1 px-3 rounded-lg float-right mr-2 flex">Save</button>
+    </div>
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>

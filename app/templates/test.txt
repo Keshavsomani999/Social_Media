@@ -1,0 +1,19 @@
+<!-- <div id="demo" class="flex-initial w-2/12 fixed links">
+    <nav class=" bg-blue-600 text-white font-bold min-h-screen max-h-screen">
+        <div class="pt-4">
+            <div class=""><img src="logo.png" class="w-14 ml-3" alt=""></div>
+            <div class="mt-2">
+                <div
+                    class="py-2 mx-2 px-2 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:rounded-md">
+                    <i class="fa-solid fa-house pr-2"></i>Home</div>
+                <div
+                    class="py-2 mx-2 px-2 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:rounded-md">
+                    <i class="fa-solid fa-user-plus pr-2"></i>About</div>
+                <div
+                    class="py-2 mx-2 px-2 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:rounded-md">
+                    <i class="fa-solid fa-phone pr-2"></i>Contact</div>
+
+            </div>
+        </div>
+    </nav>
+</div> -->
