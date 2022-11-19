@@ -1,0 +1,15 @@
+aes
+django-heroku
+django-sms
+doccano
+google-cloud-storage
+heroku
+pillow
+pip-chill
+pip-tools
+pipreqs
+pycryptodome
+shellescape
+social-auth-app-django
+twilio
+virtualenv
